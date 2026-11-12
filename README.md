@@ -14,7 +14,7 @@
   <b>Sistem monitoring komprehensif, modern, dan ultra-ringan untuk memantau perjalanan peserta (member) lembaga pelatihan kerja mulai dari pendaftaran, pelatihan vokasi, evaluasi kompetensi, interview mitra industri, hingga penempatan kerja.</b>
 </p>
 
-[Fitur Utama](#-fitur-utama) • [Desain & Performa](#-desain--performa) • [Akun Demo](#-akun-demo) • [Panduan Instalasi](#-panduan-instalasi--setup-lokal) • [Keamanan](#-keamanan--kesiapan-publikasi-github)
+[Fitur Utama](#-fitur-utama) • [Desain & Performa](#-desain--performa) • [Struktur Direktori](#-struktur-direktori-utama) • [Keamanan](#-keamanan--kesiapan-publikasi-github)
 
 </div>
 
@@ -53,7 +53,6 @@
 * **1-Click Quick Demo Login:** Tombol pengisian otomatis kredensial demo untuk evaluasi cepat tanpa repot mengetik.
 * **Middleware Berbasis Peran:** Pemisahan hak akses ketat (`role:member` dan `role:trainer`).
 * **Onboarding Multi-Step Form:** Pengalihan otomatis bagi member baru untuk melengkapi:
-  * Data pribadi (NIK, TTL, Jenis Kelamin, Status, Alamat, No. WhatsApp).
   * Pendidikan terakhir dan jurusan.
   * Pengalaman kerja, keahlian utama, dan sertifikasi.
   * Minat industri, target lokasi kerja, dan ekspektasi gaji.
@@ -112,108 +111,6 @@
 | **Arsitektur Performa** | **Zero-Lag GPU Acceleration** — bebas dari animasi loop berat yang menguras baterai/CPU. |
 | **Motion & Efek** | *Modern Staggered Entrance Motion* saat pergantian halaman dan ekspansi garis timeline progress yang artistik. |
 | **Dukungan Tema** | Mode Terang (*Light Mode*) dan Mode Gelap (*Dark Mode*) dengan penyimpanan status otomatis di `localStorage`. |
-
----
-
-## 🔑 Akun Demo
-
-Sistem telah dilengkapi dengan database seeder yang memuat data contoh realistis. Gunakan akun berikut untuk pengujian:
-
-| Peran (Role) | Email | Password | Akses Fitur |
-| :--- | :--- | :--- | :--- |
-| **Trainer / Instruktur** | `trainer@demo.com` | `password` | Dashboard Trainer, Kelola Member, Kelola Pelatihan, Unggah Modul, Kelola Interview |
-| **Member (Siap Interview)** | `member@demo.com` | `password` | Dashboard Member, Buku Saku, Modul Materi, Konfirmasi Interview BCA |
-| **Member Tambahan 1** | `budi@demo.com` | `password` | Tahap Evaluasi Kompetensi |
-| **Member Tambahan 2** | `citra@demo.com` | `password` | Tahap Pelatihan Vokasi |
-| **Member Tambahan 3** | `dewi@demo.com` | `password` | Tahap Penempatan Kerja (*Hired*) |
-
-> 💡 **Tips Cepat:** Di halaman login, Anda cukup mengklik tombol **"Gunakan Akun Demo Trainer"** atau **"Gunakan Akun Demo Member"** untuk login instan dengan satu klik.
-
----
-
-## 💻 Panduan Instalasi & Setup Lokal
-
-### Prasyarat Sistem
-* **PHP:** Versi 8.1 atau 8.2 (ekstensi `pdo_mysql`, `mbstring`, `fileinfo`, `openssl` aktif)
-* **Web Server & Database:** XAMPP / MariaDB / MySQL aktif di port default `3306`
-* **Composer:** Versi 2.x
-* **Node.js:** Versi 18+ atau 20+ (beserta `npm`)
-
-### Langkah Instalasi
-
-#### 1. Clone Repository
-```bash
-git clone <URL_REPOSITORY_ANDA>
-cd monitoring-pelatihan
-```
-
-#### 2. Install Dependensi Backend (Composer)
-```bash
-composer install
-```
-
-#### 3. Install Dependensi Frontend (NPM)
-```bash
-npm install
-```
-
-#### 4. Konfigurasi Environment (`.env`)
-Salin file template `.env.example` menjadi `.env`:
-```bash
-cp .env.example .env
-```
-
-Buka file `.env` dan pastikan konfigurasi database sesuai dengan server MySQL lokal Anda (contoh untuk XAMPP default):
-```env
-APP_NAME=TalentTrack
-APP_ENV=local
-APP_KEY=
-APP_DEBUG=true
-APP_URL=http://127.0.0.1:8000
-
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=monitoring_pelatihan
-DB_USERNAME=root
-DB_PASSWORD=
-```
-
-#### 5. Generate Application Key
-```bash
-php artisan key:generate
-```
-
-#### 6. Buat Database & Jalankan Migrasi + Seeder
-Buat database baru bernama `monitoring_pelatihan` di phpMyAdmin (`http://localhost/phpmyadmin`), kemudian jalankan:
-```bash
-php artisan migrate --seed
-```
-> Database seeder secara otomatis membuat struktur tabel, data dummy realistis, serta file contoh modul (PDF & PPT) di direktori penyimpanan lokal.
-
-#### 7. Buat Symbolic Link Storage
-Agar berkas modul, CV, dan foto profil dapat diakses publik oleh aplikasi:
-```bash
-php artisan storage:link
-```
-
-#### 8. Build Aset Frontend
-Jalankan salah satu perintah berikut:
-```bash
-# Untuk mode produksi (rekomendasi, bundle vite statis)
-npm run build
-
-# ATAU untuk mode pengembangan (hot-reload)
-npm run dev
-```
-
-#### 9. Jalankan Server Aplikasi
-```bash
-php artisan serve
-```
-
-Aplikasi kini aktif dan dapat diakses melalui browser di:
-👉 **[http://127.0.0.1:8000](http://127.0.0.1:8000)**
 
 ---
 
