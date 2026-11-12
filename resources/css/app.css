@@ -1,0 +1,204 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans antialiased text-slate-900 dark:text-on-surface min-h-screen transition-colors duration-150 selection:bg-red-600 selection:text-white;
+    background-color: #fdf2f4;
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(220, 38, 38, 0.05) 0px, transparent 50%),
+      radial-gradient(at 100% 20%, rgba(225, 29, 72, 0.04) 0px, transparent 50%),
+      radial-gradient(at 50% 100%, rgba(185, 28, 28, 0.05) 0px, transparent 50%);
+    background-attachment: fixed;
+  }
+
+  .dark body {
+    background-color: #0d090b;
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(220, 38, 38, 0.15) 0px, transparent 45%),
+      radial-gradient(at 100% 25%, rgba(153, 27, 27, 0.12) 0px, transparent 45%),
+      radial-gradient(at 40% 100%, rgba(225, 29, 72, 0.10) 0px, transparent 50%);
+    background-attachment: fixed;
+  }
+}
+
+/* Zero-Lag Ultra-Lightweight Glass Surfaces */
+.glass-panel {
+  background-color: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(244, 63, 94, 0.12);
+  box-shadow: 0 4px 20px -2px rgba(220, 38, 38, 0.05);
+}
+.dark .glass-panel {
+  background-color: rgba(26, 16, 20, 0.82);
+  border: 1px solid rgba(244, 63, 94, 0.14);
+  box-shadow: 0 8px 30px -4px rgba(0, 0, 0, 0.5);
+}
+
+.glass-card {
+  background-color: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(244, 63, 94, 0.10);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+}
+.dark .glass-card {
+  background-color: rgba(36, 21, 28, 0.75);
+  border: 1px solid rgba(244, 63, 94, 0.12);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.glass-card-hover {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, box-shadow 0.25s ease;
+}
+.glass-card-hover:hover {
+  transform: translateY(-3px) scale(1.005);
+  border-color: rgba(220, 38, 38, 0.45);
+  box-shadow: 0 12px 28px -4px rgba(220, 38, 38, 0.18), 0 0 15px rgba(244, 63, 94, 0.12);
+}
+
+/* ==========================================================================
+   Artistic & Modern Page Entrance Stagger Motion
+   ========================================================================== */
+@keyframes modernEntranceUp {
+  0% {
+    opacity: 0;
+    transform: translateY(24px) scale(0.985);
+  }
+  60% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Automatic Stagger for all top-level sections in pages */
+main > .space-y-8 > *,
+main > .space-y-6 > *,
+main > .flex-col > *,
+.stagger-container > * {
+  animation: modernEntranceUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: transform, opacity;
+}
+
+/* Sequential Delay for Top-Level Cards (Hero, Timeline, Stat Cards, Grids, Tables) */
+main > .space-y-8 > *:nth-child(1),
+main > .space-y-6 > *:nth-child(1),
+main > .flex-col > *:nth-child(1),
+.stagger-container > *:nth-child(1) {
+  animation-delay: 50ms;
+}
+
+main > .space-y-8 > *:nth-child(2),
+main > .space-y-6 > *:nth-child(2),
+main > .flex-col > *:nth-child(2),
+.stagger-container > *:nth-child(2) {
+  animation-delay: 130ms;
+}
+
+main > .space-y-8 > *:nth-child(3),
+main > .space-y-6 > *:nth-child(3),
+main > .flex-col > *:nth-child(3),
+.stagger-container > *:nth-child(3) {
+  animation-delay: 210ms;
+}
+
+main > .space-y-8 > *:nth-child(4),
+main > .space-y-6 > *:nth-child(4),
+main > .flex-col > *:nth-child(4),
+.stagger-container > *:nth-child(4) {
+  animation-delay: 290ms;
+}
+
+main > .space-y-8 > *:nth-child(5),
+main > .space-y-6 > *:nth-child(5),
+main > .flex-col > *:nth-child(5),
+.stagger-container > *:nth-child(5) {
+  animation-delay: 370ms;
+}
+
+main > .space-y-8 > *:nth-child(n+6),
+main > .space-y-6 > *:nth-child(n+6),
+main > .flex-col > *:nth-child(n+6),
+.stagger-container > *:nth-child(n+6) {
+  animation-delay: 450ms;
+}
+
+/* Grid Items Secondary Stagger (e.g. Stat cards, Modul cards, Training cards) */
+.grid > *:nth-child(1) { animation: modernEntranceUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) both 180ms; }
+.grid > *:nth-child(2) { animation: modernEntranceUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) both 250ms; }
+.grid > *:nth-child(3) { animation: modernEntranceUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) both 320ms; }
+.grid > *:nth-child(4) { animation: modernEntranceUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) both 390ms; }
+.grid > *:nth-child(5) { animation: modernEntranceUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) both 460ms; }
+.grid > *:nth-child(6) { animation: modernEntranceUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) both 530ms; }
+.grid > *:nth-child(n+7) { animation: modernEntranceUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) both 590ms; }
+
+/* Modal and Dropdown Pop Motion */
+.glass-modal {
+  animation: modalPop 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes modalPop {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Prefers Reduced Motion for Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  main > .space-y-8 > *,
+  main > .space-y-6 > *,
+  main > .flex-col > *,
+  .stagger-container > *,
+  .grid > *,
+  .glass-card-hover,
+  .glass-modal {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
+.glass-input {
+  @apply bg-white/80 dark:bg-surface-container-highest/60 border border-slate-200 dark:border-outline-variant/40 rounded-xl px-4 py-2.5 text-slate-800 dark:text-on-surface placeholder-slate-400 dark:placeholder-on-surface-variant/50 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all;
+}
+
+.glass-modal {
+  background-color: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(244, 63, 94, 0.2);
+  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.25);
+}
+.dark .glass-modal {
+  background-color: rgba(26, 16, 20, 0.95);
+  border: 1px solid rgba(244, 63, 94, 0.2);
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7);
+}
+
+/* Material symbols utility */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  vertical-align: middle;
+}
+.material-symbols-outlined.fill {
+  font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Scrollbar aesthetic */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-red-200 dark:bg-surface-container-highest rounded-full;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-red-400 dark:bg-red-900;
+}
