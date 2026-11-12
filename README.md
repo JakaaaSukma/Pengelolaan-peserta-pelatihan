@@ -14,8 +14,7 @@
   <b>Sistem monitoring komprehensif, modern, dan ultra-ringan untuk memantau perjalanan peserta (member) lembaga pelatihan kerja mulai dari pendaftaran, pelatihan vokasi, evaluasi kompetensi, interview mitra industri, hingga penempatan kerja.</b>
 </p>
 
-[Fitur Utama](#-fitur-utama) • [Desain & Performa](#-desain--performa) • [Struktur Direktori](#-struktur-direktori-utama) • [Keamanan](#-keamanan--kesiapan-publikasi-github)
-
+[Fitur Utama](#-fitur-utama) • [Desain & Performa](#-desain--performa) • [Struktur Direktori](#-struktur-direktori-utama) • 
 </div>
 
 ---
@@ -154,14 +153,6 @@ monitoring-pelatihan/
 
 ---
 
-## 🔒 Keamanan & Kesiapan Publikasi GitHub
-
-Proyek ini telah dikonfigurasi secara higienis dan aman untuk dipublikasikan secara publik ke GitHub:
-1. **Perlindungan File Sensitif:** File kredensial asli `.env` telah dimasukkan ke dalam `.gitignore` sehingga tidak akan pernah terunggah ke repositori publik.
-2. **Template Bersih (`.env.example`):** File `.env.example` bersih dari kunci privat (*no exposed APP_KEY*) maupun kredensial database sensitif.
-3. **Penyimpanan Lokal Mandiri (*Self-Generating Files*):** File contoh modul pelatihan (PDF dan PowerPoint) serta berkas pendukung dibuat secara otomatis oleh `DatabaseSeeder.php` saat perintah migrasi dijalankan, sehingga repositori tetap ringan dan bersih tanpa *binary blob* berlebih.
-4. **Bebas Kunci API Pihak Ketiga:** Tidak ada token API, rahasia OAuth, atau data pribadi nyata (PII) yang tertanam di dalam kode sumber.
-5. **CSRF & Sanitasi Input:** Semua form dilengkapi token proteksi CSRF Laravel dan validasi input yang ketat pada sisi server.
 
 ---
 
